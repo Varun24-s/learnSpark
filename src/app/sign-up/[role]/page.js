@@ -29,7 +29,7 @@ export default async function SignUpPage({ params }) {
             .single();
 
         if (existingUser) {
-            return { error: "Username already taken." };
+            redirect(`/sign-up/${validatedRole.toLowerCase()}?error=Username already taken.`);
         }
 
         // 2. If Parent, check if child exists
@@ -43,7 +43,10 @@ export default async function SignUpPage({ params }) {
                 .single();
 
             if (!childProfile) {
-                return { error: `Child username "${childUsername}" not found. You can link them later in the dashboard.` };
+                // Not a fatal error, just inform them they can link later
+                // But for a "strict" flow we could return an error
+                // For now let's just proceed without linkage or show error
+                redirect(`/sign-up/${validatedRole.toLowerCase()}?error=Child username not found. You can link them later in dashboard.`);
             }
             childId = childProfile.id;
         }
@@ -62,9 +65,10 @@ export default async function SignUpPage({ params }) {
         });
 
         if (error) {
-            return { error: error.message };
+            redirect(`/sign-up/${validatedRole.toLowerCase()}?error=${encodeURIComponent(error.message)}`);
         }
 
+        // 4. Implicitly link parent-child if applicable
         if (childId && data.user) {
             await new Promise(r => setTimeout(r, 200));
             await supabase.from("parent_child_links").insert({

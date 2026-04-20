@@ -3,9 +3,7 @@ import { getProfile, signOut } from "@/lib/auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import {
-    Settings,
     UserPlus,
-    Shield,
     LogOut,
     Star,
     ChevronRight,
@@ -69,9 +67,9 @@ export default async function ParentDashboard({ searchParams }) {
                     </div>
                 )}
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <div className="grid grid-cols-1 gap-10">
                     {/* Children List */}
-                    <section className="lg:col-span-2 space-y-8 animate-fade-up [animation-delay:0.1s]">
+                    <section className="space-y-8 animate-fade-up [animation-delay:0.1s]">
                         <div className="glass-lg rounded-[3rem] p-10">
                             <div className="flex items-center justify-between mb-10">
                                 <h2 className="flex items-center gap-3 text-2xl font-black text-text-dark tracking-tighter">
@@ -116,41 +114,6 @@ export default async function ParentDashboard({ searchParams }) {
                         </div>
                     </section>
 
-                    {/* Sidebar: Security */}
-                    <section className="space-y-8 animate-fade-up [animation-delay:0.2s]">
-                        <div className="glass-lg rounded-[3rem] p-10">
-                            <h2 className="flex items-center gap-3 text-2xl font-black text-text-dark tracking-tighter mb-8">
-                                <Shield size={28} className="text-emerald-500" strokeWidth={2.5} /> Security
-                            </h2>
-                            <div className="space-y-4">
-                                <Link href="/mfa-enroll" className="flex items-center justify-between p-5 bg-white/50 rounded-[1.8rem] border-2 border-slate-50 group hover:border-primary/20 hover:bg-white transition-all">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-500 shadow-inner-clay">
-                                            <Shield size={20} />
-                                        </div>
-                                        <div>
-                                            <h3 className="font-black text-text-dark text-[15px] group-hover:text-primary transition-colors">2-Factor Auth</h3>
-                                            <p className="text-[11px] font-black text-text-light uppercase tracking-wider">Extra protection</p>
-                                        </div>
-                                    </div>
-                                    <ChevronRight size={18} className="text-slate-300 group-hover:text-primary transition-colors translate-x-0 group-hover:translate-x-1" strokeWidth={3} />
-                                </Link>
-
-                                <button className="w-full flex items-center justify-between p-5 bg-slate-100/50 rounded-[1.8rem] opacity-50 cursor-not-allowed text-left">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center text-slate-300">
-                                            <Settings size={20} />
-                                        </div>
-                                        <div>
-                                            <h3 className="font-black text-text-dark text-[15px]">Settings</h3>
-                                            <p className="text-[11px] font-black text-text-light uppercase tracking-wider">Profile & Email</p>
-                                        </div>
-                                    </div>
-                                    <Settings size={18} className="text-slate-200" />
-                                </button>
-                            </div>
-                        </div>
-                    </section>
                 </div>
             </div>
         </main>
