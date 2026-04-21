@@ -41,12 +41,12 @@ export default async function LandingPage() {
         </div>
 
         <div className="flex items-center gap-4">
-          <button className="hidden md:flex items-center gap-2 px-4 py-2 hover:bg-black/5 rounded-full font-bold text-sm transition-all">
+          {/* <button className="hidden md:flex items-center gap-2 px-4 py-2 hover:bg-black/5 rounded-full font-bold text-sm transition-all">
             <Palette size={18} /> Activities
           </button>
           <button className="hidden md:flex items-center gap-2 px-4 py-2 hover:bg-black/5 rounded-full font-bold text-sm transition-all">
             <BookOpen size={18} /> How It Works
-          </button>
+          </button> */}
           <Link
             href={user ? "/dashboard" : "/sign-in"}
             className="flex items-center gap-2 px-6 py-2 bg-[#B2EBF2] text-[#006064] rounded-full font-bold text-sm hover:scale-105 transition-all border border-white shadow-sm"
